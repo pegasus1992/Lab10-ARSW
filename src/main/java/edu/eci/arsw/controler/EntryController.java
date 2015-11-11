@@ -17,25 +17,37 @@ public class EntryController {
 
     private final AtomicLong counter = new AtomicLong();
     private List<Entry> entries = new ArrayList<>();
+
     {
-        entries.add(new Entry("Title0","Content0"));
-        entries.add(new Entry("Title1","Content1"));
+        entries.add(new Entry("Title0", "Content0"));
+        entries.add(new Entry("Title1", "Content1"));
     }
 
-    @RequestMapping(method = RequestMethod.GET,value = "/blogs")
+    @RequestMapping(method = RequestMethod.GET, value = "/blogs")
     public List<Entry> getEntries() {
         return entries;
     }
 
-    @RequestMapping(method = RequestMethod.POST,value = "/blog")
-    public  ResponseEntity<?>  postEntry(@RequestBody Entry p) {
+    @RequestMapping(method = RequestMethod.POST, value = "/blog")
+    public ResponseEntity<?> postEntry(@RequestBody Entry p) {
         entries.add(p);
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 
-    @RequestMapping(method = RequestMethod.POST,value = "/blog/{index}")
-    public ResponseEntity<?>  deleteEntry(@PathVariable("index") int index) {
+    @RequestMapping(method = RequestMethod.POST, value = "/blog/{index}")
+    public ResponseEntity<?> deleteEntry(@PathVariable("index") int index) {
         entries.remove(index);
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
+    }
+
+    /*@RequestMapping(method = RequestMethod.POST, value = "/blog/{index}")
+    public ResponseEntity<?> editEntry(@PathVariable("index") int index, @RequestBody Entry p) {
+        entries.set(index, p);
+        return new ResponseEntity<>(HttpStatus.ACCEPTED);
+    }*/
+    
+    @RequestMapping(method = RequestMethod.GET, value = "/blog/{index}")
+    public Entry getEntry(@PathVariable("index") int index) {
+        return entries.get(index);
     }
 }
