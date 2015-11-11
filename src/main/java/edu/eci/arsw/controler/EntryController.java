@@ -40,14 +40,9 @@ public class EntryController {
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 
-    /*@RequestMapping(method = RequestMethod.POST, value = "/blog/{index}")
+    @RequestMapping(method = RequestMethod.PUT, value = "/blog/{index}")
     public ResponseEntity<?> editEntry(@PathVariable("index") int index, @RequestBody Entry p) {
         entries.set(index, p);
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
-    }*/
-    
-    @RequestMapping(method = RequestMethod.GET, value = "/blog/{index}")
-    public Entry getEntry(@PathVariable("index") int index) {
-        return entries.get(index);
     }
 }
