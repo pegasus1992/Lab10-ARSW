@@ -14,7 +14,6 @@ app.controller("blogCtrl", function ($scope, $log, $http) {
             alert("Ha fallado la petición. Estado HTTP:" + status);
         });
     };
-
     $scope.loadData();
     $scope.processForm = function () {
         $log.debug($scope.entry);
@@ -27,7 +26,6 @@ app.controller("blogCtrl", function ($scope, $log, $http) {
             $scope.loadData();
         });
     };
-
     $scope.delete = function (index) {
         $http({
             method: 'DELETE',
@@ -37,7 +35,7 @@ app.controller("blogCtrl", function ($scope, $log, $http) {
             console.log(data);
             $scope.loadData();
         });
-    }
+    };
     $scope.edit = function (index, e) {
         $http({
             method: 'PUT',
@@ -47,13 +45,5 @@ app.controller("blogCtrl", function ($scope, $log, $http) {
             console.log(data);
             $scope.loadData();
         });
-    }
-
-    $scope.search = function (index) {
-        $http.get('blog/' + index).success(function (data, status, header, config) {
-            alert("titulo" + data.title + " Contenido: " + data.content);
-        }).error(function (data, status, headers, config) {
-            alert("Ha fallado la petición. Estado HTTP:" + status);
-        });
-    }
+    };
 });
