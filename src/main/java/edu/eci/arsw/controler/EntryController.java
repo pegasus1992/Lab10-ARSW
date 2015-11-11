@@ -34,7 +34,7 @@ public class EntryController {
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/blog/{index}")
+    @RequestMapping(method = RequestMethod.DELETE, value = "/blog/{index}")
     public ResponseEntity<?> deleteEntry(@PathVariable("index") int index) {
         entries.remove(index);
         return new ResponseEntity<>(HttpStatus.ACCEPTED);

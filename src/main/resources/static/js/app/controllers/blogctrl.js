@@ -30,7 +30,7 @@ app.controller("blogCtrl", function ($scope, $log, $http) {
 
     $scope.delete = function (index) {
         $http({
-            method: 'POST',
+            method: 'DELETE',
             url: 'blog/' + index,
             data: index
         }).success(function (data) {
