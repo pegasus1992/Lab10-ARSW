@@ -26,4 +26,15 @@ app.controller("blogCtrl", function($scope, $log, $http) {
             $scope.loadData();
         });
     };
+    
+    $scope.delete = function(index){
+        $http({
+            method  : 'POST',
+            url     : 'blog/'+index,
+            data    : index
+        }).success(function(data) {
+            console.log(data);
+            $scope.loadData();
+        });
+    }
 });

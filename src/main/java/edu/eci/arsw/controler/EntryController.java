@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import java.util.*;
 import edu.eci.arsw.model.*;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
 public class EntryController {
@@ -32,4 +33,9 @@ public class EntryController {
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 
+    @RequestMapping(method = RequestMethod.POST,value = "/blog/{index}")
+    public ResponseEntity<?>  deleteEntry(@PathVariable("index") int index) {
+        entries.remove(index);
+        return new ResponseEntity<>(HttpStatus.ACCEPTED);
+    }
 }
